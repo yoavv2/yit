@@ -1,0 +1,29 @@
+.card_wrap {
+  display: grid;
+  place-items: center;
+  background: #fafcfd;
+  width: 500px;
+  height: 700px;
+}
+.card {
+  background-color: #fff;
+  width: 400px;
+  height: 600px;
+}
+.card_image {
+  height: 200px;
+}
+.card_main {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.card_main__category {
+  margin-top: 5px;
+  width: 50px;
+  padding: 7px;
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+}
