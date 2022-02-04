@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react';
 
 import './Form.css';
-// import ImageInput from './ImageInput/ImageInput';
 
 function Form({
   images,
@@ -33,7 +32,6 @@ function Form({
   };
 
   const handleChange = (e) => {
-    // const imageUrl = urlRef.current.value;
     setUrl(e.target.value);
   };
 
