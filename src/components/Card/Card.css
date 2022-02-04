@@ -1,14 +1,17 @@
+@import url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
 .card_wrap {
   display: grid;
   place-items: center;
-  background: #fafcfd;
+  background: #eef1f6;
   width: 500px;
   height: 700px;
 }
 .card {
   background-color: #fff;
   width: 400px;
-  height: 600px;
+  /* height: 400px; */
+  overflow: hidden;
+  font-family: 'Open Sans Hebrew', sans-serif;
 }
 .card_image {
   height: 200px;
@@ -17,13 +20,28 @@
   margin: 10px;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
+  height: 100%;
 }
-.card_main__category {
+.card_category {
   margin-top: 5px;
   width: 50px;
-  padding: 7px;
+  min-height: 15px;
+  padding: 10px;
   color: white;
   font-size: 1em;
   font-weight: bold;
+  text-align: center;
+}
+.card_title {
+  line-height: 1.3;
+  font-size: 1.8em;
+}
+
+.card_subtitle {
+  font-weight: 300;
+  line-height: 1.5;
+  font-size: 1.2em;
+}
+.card_author {
 }

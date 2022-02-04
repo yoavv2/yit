@@ -1,25 +1,24 @@
 import React from 'react';
 import './Card.css';
 import Carousel from '../Carousel/Carousel';
-function Card() {
-  let color = 'red';
+function Card({ images, subtitle, title, author, category, color }) {
   return (
     <section className='card_wrap'>
       <div className='card'>
         <div className='card_image'>
-          <Carousel />
+          <Carousel images={images} />
         </div>
         <main className='card_main'>
           <div
-            className={`card_main__category`}
+            className='card_category'
             style={{ backgroundColor: `${color}` }}
           >
-            חופש
+            {category.substring(0, 6)}
           </div>
-          <h2>כותרת</h2>
-          <h3>כותרת משנה</h3>
+          <h2 className='card_title'>{title.substring(0, 100)}</h2>
+          <h4 className='card_subtitle'> {subtitle.substring(0, 200)}</h4>
 
-          <div>author</div>
+          <div className='card_author'>{author}</div>
         </main>
       </div>
     </section>
