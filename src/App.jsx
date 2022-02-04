@@ -18,32 +18,35 @@ function App() {
     setImages(images.filter((_, i) => i !== index));
   };
 
+  const formProps = {
+    images,
+    getNewImage,
+    deleteImage,
+    setCategory,
+    setSubtitle,
+    setTitle,
+    setAuthor,
+    author,
+    title,
+    subtitle,
+    category,
+    color,
+    setColor,
+  };
+
+  const cardProps = {
+    images,
+    author,
+    title,
+    subtitle,
+    color,
+    category,
+  };
   console.log('images ', images);
   return (
     <div className='App'>
-      <Card
-        images={images}
-        author={author}
-        title={title}
-        subtitle={subtitle}
-        color={color}
-        category={category}
-      />
-      <Form
-        images={images}
-        getNewImage={getNewImage}
-        deleteImage={deleteImage}
-        setCategory={setCategory}
-        setSubtitle={setSubtitle}
-        setTitle={setTitle}
-        setAuthor={setAuthor}
-        author={author}
-        title={title}
-        subtitle={subtitle}
-        category={category}
-        color={color}
-        setColor={setColor}
-      />
+      <Card {...cardProps} />
+      <Form {...formProps} />
     </div>
   );
 }
