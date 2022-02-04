@@ -3,7 +3,7 @@
   "homepage": "http://yoavv2.github.io/yit",
   "version": "0.0.0",
   "scripts": {
-    "predeploy": "npm run build",
+    "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
     "dev": "vite",
     "build": "vite build",
