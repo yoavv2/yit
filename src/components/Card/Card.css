@@ -1,15 +1,9 @@
 @import url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
-.card_wrap {
-  display: grid;
-  place-items: center;
-  background: #eef1f6;
-  width: 500px;
-  height: 700px;
-}
+
 .card {
   background-color: #fff;
   width: 400px;
-  /* height: 400px; */
+
   overflow: hidden;
   font-family: 'Open Sans Hebrew', sans-serif;
 }
@@ -25,7 +19,7 @@
 }
 .card_category {
   margin-top: 5px;
-  width: 50px;
+  /* width: 50px; */
   min-height: 15px;
   padding: 10px;
   color: white;
@@ -42,6 +36,4 @@
   font-weight: 300;
   line-height: 1.5;
   font-size: 1.2em;
-}
-.card_author {
 }

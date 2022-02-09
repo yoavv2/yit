@@ -1,42 +1,21 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 
 import './Form.css';
 
 function Form({
-  images,
-  getNewImage,
+  addNewImageField,
   deleteImage,
-  subtitle,
-  setSubtitle,
-  title,
-  setTitle,
+  handleChangeImages,
+  handleInputChange,
+  images,
   author,
-  setAuthor,
-  setCategory,
+  title,
+  subtitle,
   category,
   color,
-  setColor,
 }) {
-  const urlRef = useRef();
-  const [url, setUrl] = useState('');
-  const [error, setError] = useState(null);
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    // if (!url) {
-    //   setError('Please enter a valid URL');
-    //   return;
-    // }
-    getNewImage(url);
-    // setUrl('');
-  };
-
-  const handleChange = (e) => {
-    setUrl(e.target.value);
-  };
-
-  const handleDelete = (imageUrl, index) => {
-    deleteImage(imageUrl);
   };
 
   const colors = [
@@ -47,7 +26,7 @@ function Form({
   ];
 
   return (
-    <div className='form_wrap'>
+    <>
       <form className='form' onSubmit={handleSubmit}>
         <label> תמונות</label>
         <div>
@@ -55,31 +34,34 @@ function Form({
             images.map((image, i) => (
               <div className='input_wrap'>
                 <input
-                  className='input inputUrl'
+                  className='input input_url'
                   type='url'
                   name='imageUrl'
                   placeholder='תמונה'
-                  required
-                  ref={urlRef}
-                  onChange={handleChange}
-                  value={url}
+                  onChange={(e) => handleChangeImages(e.target.value, i)}
+                  value={image}
+                  autoComplete='off'
                 />
                 <button
                   className='btn btn_delete'
-                  onClick={() => handleDelete(i)}
+                  onClick={() => deleteImage(i)}
                 >
                   מחק
                 </button>
               </div>
             ))}
         </div>
-        <button className='btn btn_addImage' type='submit'>
+        <button
+          className='btn btn_add_image'
+          type='submit'
+          onClick={addNewImageField}
+        >
           הוסף תמונה
         </button>
         <label className='label_color'> צבע רקע - שם קטגוריה</label>
         <select
-          className='input selectionInput'
-          onChange={(e) => setColor(e.target.value)}
+          className='input selection_input'
+          onChange={(e) => handleInputChange('color', e.target.value)}
         >
           {colors.map((color) => (
             <option value={color.value}>{color.name}</option>
@@ -87,17 +69,17 @@ function Form({
         </select>
         <label className='label_category'> קטגוריה</label>
         <input
-          className='input inputCategory'
+          className='input input_category'
           type='text'
           value={category}
-          onChange={(e) => setCategory(e.target.value)}
+          onChange={(e) => handleInputChange('category', e.target.value)}
         />
         <label className='label_title'> כותרת</label>
         <input
-          className='input inputTitle'
+          className='input input_title'
           type='text'
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={(e) => handleInputChange('title', e.target.value)}
         />
         <label className='label_subtitle'> כותרת משנה</label>
         <textarea
@@ -105,17 +87,17 @@ function Form({
           type='text'
           style={{ width: '100%', minHeight: '20px', resize: 'vertical' }}
           value={subtitle}
-          onChange={(e) => setSubtitle(e.target.value)}
+          onChange={(e) => handleInputChange('subtitle', e.target.value)}
         />
         <label className='label_author'> שם המחבר</label>
         <input
-          className='input inputAuthor'
+          className='input input_author'
           type='text'
           value={author}
-          onChange={(e) => setAuthor(e.target.value)}
+          onChange={(e) => handleInputChange('author', e.target.value)}
         />
       </form>
-    </div>
+    </>
   );
 }
 

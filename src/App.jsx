@@ -9,29 +9,53 @@ function App() {
   const [title, setTitle] = useState('');
   const [subtitle, setSubtitle] = useState('');
   const [category, setCategory] = useState('');
-  const [color, setColor] = useState('');
-  const getNewImage = (image) => {
-    setImages([image, ...images]);
+  const [color, setColor] = useState('red');
+
+  const addNewImageField = () => {
+    setImages([...images, '']);
+  };
+  const handleChangeImages = (value, i) => {
+    const temp = [...images];
+    temp[i] = value;
+    setImages(temp);
   };
 
   const deleteImage = (index) => {
-    setImages(images.filter((_, i) => i !== index));
+    const temp = [...images];
+    temp.splice(index, 1);
+    setImages(temp);
   };
 
+  const handleInputChange = (target, value) => {
+    switch (target) {
+      case 'author':
+        setAuthor(value);
+        break;
+      case 'title':
+        setTitle(value);
+        break;
+      case 'subtitle':
+        setSubtitle(value);
+        break;
+      case 'category':
+        setCategory(value);
+        break;
+      case 'color':
+        setColor(value);
+        break;
+      default:
+    }
+  };
+
+  // https://cdn-prod.medicalnewstoday.com/content/images/articles/322/322868/golden-retriever-puppy.jpg
+  // https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgswCFmbTpJmErjtFi_oOL8Q87v4W3jUQEDw&usqp=CAU
+  // https://www.gettyimages.com/gi-resources/images/500px/983794168.jpg
+
   const formProps = {
-    images,
-    getNewImage,
+    addNewImageField,
+    handleChangeImages,
+    handleInputChange,
     deleteImage,
-    setCategory,
-    setSubtitle,
-    setTitle,
-    setAuthor,
-    author,
-    title,
-    subtitle,
-    category,
-    color,
-    setColor,
   };
 
   const cardProps = {
@@ -46,7 +70,7 @@ function App() {
   return (
     <div className='App'>
       <Card {...cardProps} />
-      <Form {...formProps} />
+      <Form {...formProps} {...cardProps} />
     </div>
   );
 }
